@@ -74,4 +74,231 @@
     .grid { display:grid; gap: 16px; grid-template-columns: repeat(12, 1fr); margin-top: 24px; }
     .card {
       grid-column: span 12; background: var(--card); border: 1px solid var(--border);
-      borde
+      border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow);
+    }
+    .card h2 { margin: 0 0 8px; font-size: 20px; }
+    .card h3 { margin: 8px 0; font-size: 16px; }
+    .cols { display:grid; gap:16px; grid-template-columns: repeat(2, 1fr); }
+    .muted { color: var(--muted); }
+    code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+    pre {
+      background: var(--code); color: #d7e3ed; border:1px solid var(--border);
+      padding: 14px; border-radius: 12px; overflow:auto; position: relative;
+    }
+    .copy {
+      position:absolute; top:8px; right:8px; font-size:12px; padding:6px 8px; border-radius:8px;
+      border:1px solid var(--border); background: var(--card-2); color: var(--muted); cursor:pointer;
+    }
+    .module-cards { display:grid; gap:12px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .pill { display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; border:1px solid var(--border); background: var(--card-2); color: var(--muted); font-size:12px; }
+    footer { max-width:1100px; margin: 40px auto; padding: 20px; color: var(--muted); }
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; }
+      .cols { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <header>
+    <div class="nav">
+      <div style="display:flex; gap:12px; align-items:center;">
+        <span class="brand">FourTwenty • The Evaluator</span>
+        <span class="tag">MIT</span>
+        <span class="tag">Modular dashboard</span>
+      </div>
+      <div class="links">
+        <a href="#tldr">TL;DR</a>
+        <a href="#inside">What’s inside</a>
+        <a href="#quickstart">Quick start</a>
+        <a href="#telemetry">Telemetry</a>
+        <a href="#modules">Modules</a>
+        <a href="#bi">BI</a>
+        <a href="#arch">Architecture</a>
+        <a href="#contrib">Contributing</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <h1>Evaluation framework for model performance, data quality, and decision criteria.</h1>
+        <p>Use this repo to prototype and ship evaluators that are observable (via GA4/GTM), reproducible (scripts + artifacts), and decision-oriented (guardrails & thresholds). Designed to be cloned module-by-module.</p>
+        <div class="badges">
+          <span class="badge">Status: public</span>
+          <span class="badge">Telemetry: GA4 via GTM</span>
+          <span class="badge">No PII</span>
+          <span class="badge">Power BI friendly</span>
+        </div>
+      </div>
+      <div class="card" style="background:var(--card-2)">
+        <h3>Repo anatomy</h3>
+<pre><button class="copy" onclick="copyBlock(this)">Copy</button><code>evaluator/
+├─ apps/
+│  ├─ ux_playground/          # trigger & verify events
+│  └─ module_template/
+├─ modules/
+│  ├─ model-performance/
+│  ├─ data-quality/
+│  ├─ decision-criteria/
+│  └─ _template/
+├─ telemetry/                 # GTM, GA4, events.json
+├─ powerbi/                   # PBIX notes/exports
+├─ artifacts/                 # screenshots/exports
+├─ scripts/                   # helpers (serve.sh)
+└─ docs/                      # architecture & notes
+</code></pre>
+      </div>
+    </section>
+
+    <div class="grid">
+      <section id="tldr" class="card">
+        <h2>TL;DR</h2>
+        <p class="muted">Ship a modular evaluator with three pillars: <strong>Model Performance</strong>, <strong>Data Quality</strong>, and <strong>Decision Criteria</strong>. Track usage with standardized events (<code>evaluator_action</code>) and showcase results in Power BI.</p>
+      </section>
+
+      <section id="inside" class="card">
+        <h2>What’s inside</h2>
+        <div class="cols">
+          <div>
+            <ul>
+              <li><strong>Modules:</strong> self-contained feature folders under <code>modules/</code>.</li>
+              <li><strong>Apps:</strong> <code>apps/ux_playground</code> to emit events and demo flows.</li>
+              <li><strong>Telemetry:</strong> GA4 via GTM, no PII. Canonical taxonomy in <code>telemetry/events.json</code>.</li>
+              <li><strong>Artifacts:</strong> screenshots/GIFs/exports for PRs and docs.</li>
+              <li><strong>BI:</strong> Power BI notes/exports in <code>powerbi/</code>.</li>
+            </ul>
+          </div>
+          <div>
+            <ul>
+              <li><strong>Governance:</strong> Conventional commits, lightweight PR checklist.</li>
+              <li><strong>Local dev:</strong> zero-dep static server (<code>scripts/serve.sh</code>).</li>
+              <li><strong>Licensing:</strong> MIT.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="quickstart" class="card">
+        <h2>Quick start</h2>
+        <ol>
+          <li>Clone the repo and serve locally.</li>
+        </ol>
+<pre><button class="copy" onclick="copyBlock(this)">Copy</button><code>git clone &lt;your-repo-url&gt; evaluator
+cd evaluator
+./scripts/serve.sh   # or: python3 -m http.server 5500</code></pre>
+        <ol start="2">
+          <li>Open <code>http://localhost:5500/apps/ux_playground/</code>, click tiles to emit events.</li>
+          <li>Enable GTM Preview, confirm events in Tag Assistant → GA4 DebugView.</li>
+          <li>Start a new module by copying the template:</li>
+        </ol>
+<pre><button class="copy" onclick="copyBlock(this)">Copy</button><code>cp -R modules/_template modules/&lt;your-module-slug&gt;</code></pre>
+      </section>
+
+      <section id="telemetry" class="card">
+        <h2>Telemetry: GA4 via GTM</h2>
+        <p class="muted">Standardized client events so usage is measurable across modules.</p>
+        <div class="cols">
+          <div>
+            <h3>Event taxonomy</h3>
+<pre><code>{
+  "name": "evaluator_action",
+  "required_params": ["module", "action"],
+  "optional_params": ["context", "ts"],
+  "examples": [
+    {"module":"model-performance","action":"view_kpi","context":{"kpi":"roc_auc","value":0.87}},
+    {"module":"data-quality","action":"run_check","context":{"check":"freshness_hours","value":3}},
+    {"module":"decision-criteria","action":"approve","context":{"policy":"launch_gate"}}
+  ]
+}</code></pre>
+          </div>
+          <div>
+            <h3>GTM wiring (GA4 event)</h3>
+            <ol>
+              <li>Create GA4 Configuration tag (Measurement ID from GA4).</li>
+              <li>Create GA4 Event tag listening to <code>evaluator_action</code>.</li>
+              <li>Map parameters: <code>module</code>, <code>action</code>, <code>context</code> (stringified), <code>ts</code>.</li>
+              <li>Preview → trigger actions in the playground → verify in DebugView.</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section id="modules" class="card">
+        <h2>Modules</h2>
+        <div class="module-cards">
+          <div class="card" style="padding:14px;">
+            <h3>Model Performance</h3>
+            <p class="muted">KPIs (ROC/PR, lift), challenger vs. baseline, drift monitors.</p>
+            <div class="pill"><span>Events:</span><code>view_kpi</code>, <code>compare</code></div>
+          </div>
+          <div class="card" style="padding:14px;">
+            <h3>Data Quality</h3>
+            <p class="muted">Freshness, completeness, validity; issue surfacing & reports.</p>
+            <div class="pill"><span>Events:</span><code>run_check</code>, <code>open_report</code></div>
+          </div>
+          <div class="card" style="padding:14px;">
+            <h3>Decision Criteria</h3>
+            <p class="muted">Guardrails and thresholds that define release/rollback gates.</p>
+            <div class="pill"><span>Events:</span><code>apply_threshold</code>, <code>approve</code></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="bi" class="card">
+        <h2>Power BI views</h2>
+        <ul>
+          <li><strong>Model Performance View:</strong> KPI cards, ROC/PR, lift vs. baseline.</li>
+          <li><strong>Data Quality View:</strong> freshness (hrs), completeness %, validity issues.</li>
+          <li><strong>Decision View:</strong> criteria table, pass/fail, rationale notes.</li>
+        </ul>
+        <p class="muted">Export static PNGs/GIFs to <code>artifacts/</code> and reference them in PRs.</p>
+      </section>
+
+      <section id="arch" class="card">
+        <h2>Architecture (high-level)</h2>
+<pre><code>User → UX (apps/*) → dataLayer → GTM → GA4 → BigQuery (optional) → Power BI
+                     └── interacts with modules: model-performance | data-quality | decision-criteria
+</code></pre>
+        <p class="muted">A Mermaid diagram lives in <code>docs/architecture.md</code> if you want a rendered graphic.</p>
+      </section>
+
+      <section id="contrib" class="card">
+        <h2>Contributing</h2>
+        <ul>
+          <li><strong>Branching:</strong> <code>feat/&lt;slug&gt;</code>, <code>fix/&lt;slug&gt;</code>, <code>docs/&lt;slug&gt;</code></li>
+          <li><strong>Commits:</strong> Conventional commits (<code>feat:</code>, <code>fix:</code>, <code>docs:</code>, <code>chore:</code>)</li>
+          <li><strong>PRs:</strong> include screenshots/GIFs in <code>artifacts/</code>; list affected module(s); note telemetry changes.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>License</h2>
+        <p class="muted">MIT © <span id="year"></span> Zach Breeden</p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div>Last updated: <span id="updated"></span></div>
+  </footer>
+
+  <script>
+    // tiny helpers
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('updated').textContent = new Date().toISOString();
+
+    function copyBlock(btn) {
+      const pre = btn.parentElement;
+      const code = pre.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        const old = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = old, 1200);
+      });
+    }
+  </script>
+</body>
+</html>
