@@ -1,1 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FourTwenty • The Evaluator — README</title>
+  <meta name="description" content="The Evaluator — modular dashboard framework for model performance, data quality, and decision criteria. Telemetry via GA4 (GTM), BI via Power BI." />
+  <meta property="og:title" content="FourTwenty • The Evaluator — README" />
+  <meta property="og:description" content="Modular dashboard framework for model performance, data quality, and decision criteria." />
+  <meta name="theme-color" content="#0b0f14" />
 
+  <!-- Optional: Google Tag Manager (replace GTM-XXXXXXX, or delete this block) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    // Fire a view event so you can verify GTM wiring from this page too.
+    window.dataLayer.push({
+      event: 'evaluator_action',
+      module: 'readme',
+      action: 'view',
+      context: { page: 'html_readme' },
+      ts: new Date().toISOString()
+    });
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+      var f=d.getElementsByTagName(s)[0], j=d.createElement(s), dl=l!='dataLayer'?'&l='+l:'';
+      j.async=true; j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+      f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX'); /* ← your GTM ID */
+  </script>
+  <!-- End GTM -->
+
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --card: #121922;
+      --card-2: #0e141d;
+      --text: #e8ecf1;
+      --muted: #a9b7c6;
+      --accent: #7cd2ff;
+      --accent-2: #8cffc7;
+      --code: #0a0f13;
+      --border: #1c2633;
+      --shadow: 0 8px 30px rgba(0,0,0,.25);
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 800px at 20% -10%, #13202d 0, #0b0f14 50%) fixed, var(--bg);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header {
+      position: sticky; top: 0; backdrop-filter: saturate(130%) blur(8px);
+      background: rgba(11,15,20,.6); border-bottom: 1px solid var(--border); z-index: 50;
+    }
+    .nav {
+      max-width: 1100px; margin: 0 auto; padding: 12px 20px; display:flex; gap:16px; align-items:center; justify-content:space-between;
+    }
+    .brand { font-weight: 700; letter-spacing:.3px; }
+    .tag { font-size: 12px; padding:4px 8px; border:1px solid var(--border); border-radius:999px; color:var(--muted); }
+    .links { display:flex; gap:12px; flex-wrap:wrap; }
+    main { max-width: 1100px; margin: 32px auto 120px; padding: 0 20px; }
+    .hero {
+      display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px; align-items: center;
+      background: linear-gradient(180deg, rgba(124,210,255,.06), transparent 50%);
+      border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow);
+    }
+    .hero h1 { margin:8px 0 6px; font-size: clamp(26px, 3.2vw, 38px); }
+    .hero p { color: var(--muted); margin: 0 0 14px; line-height: 1.6; }
+    .badges { display:flex; gap:10px; flex-wrap:wrap; margin:12px 0 0; }
+    .badge { font-size:12px; padding:6px 10px; border:1px solid var(--border); border-radius:999px; background: var(--card-2); color:var(--muted); }
+    .grid { display:grid; gap: 16px; grid-template-columns: repeat(12, 1fr); margin-top: 24px; }
+    .card {
+      grid-column: span 12; background: var(--card); border: 1px solid var(--border);
+      borde
