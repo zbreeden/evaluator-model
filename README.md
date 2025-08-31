@@ -1,6 +1,6 @@
 # FourTwenty • The Evaluator
 
-Evaluation framework — model performance, data quality, decision criteria.
+>>Metrics, quality assurance, and KPI.
 
 ## What's inside
 - **Purpose:** < 1–2 lines on the problem it solves.
