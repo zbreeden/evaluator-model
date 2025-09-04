@@ -1,0 +1,12 @@
+orbit_icons:
+  launch: "🚀"
+  archive: "🫀"
+status_icons:
+  seed: "🌱"
+  sprout: "🌿"
+  budding: "🌼"
+  bloom: "🌺"
+  dormant: "🍂"
+glyph_icons:
+  anchor: "⚓️"
+  lineage: "🧬"
