@@ -1,0 +1,41 @@
+# seeds/statuses.yml
+# Canonical lifecycle for FourTwenty modules
+- id: seed
+  label: "Seed"
+  emoji: "🌱"
+  order: 10
+  meaning: "Idea captured; repo exists; README stub."
+  criteria: ["repo_created", "readme_stub"]
+  allowed_next: ["sprout"]
+
+- id: sprout
+  label: "Sprout"
+  emoji: "🌿"
+  order: 20
+  meaning: "Scaffold working; basic demo or notebook runs."
+  criteria: ["scaffold_ready", "seeds_defined", "hello_world_demo"]
+  allowed_next: ["budding", "dormant"]
+
+- id: budding
+  label: "Budding"
+  emoji: "🌼"
+  order: 30
+  meaning: "Core features in place; ETL + docs; sample data."
+  criteria: ["etl_path", "unit_tests_min", "readme_fragments", "preview_link"]
+  allowed_next: ["bloom", "dormant"]
+
+- id: bloom
+  label: "Bloom"
+  emoji: "🌺"
+  order: 40
+  meaning: "Public-ready; CI green; dashboard/API live; lineage tracked."
+  criteria: ["ci_green", "dashboard_live", "api_or_export", "lineage_tracked"]
+  allowed_next: ["dormant"]
+
+- id: dormant
+  label: "Dormant"
+  emoji: "🍂"
+  order: 90
+  meaning: "Paused; security/maintenance only; clearly labeled."
+  criteria: ["archived_notice"]
+  allowed_next: ["sprout"]
