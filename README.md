@@ -1,4 +1,8 @@
-# FourTwenty • The Evaluator
+### ⚖️ The Evaluator — Sun (Delivery & Insight)
+Release gates & an evidence board that turns module telemetry into go/no-go decisions.
+**Feeds:** 📡 Signal • 🧮 Bank • 🚀 Launch • 🫀 Archive  
+**Publishes:** Gates A–D • Evidence feed • Power BI snapshots
+
 
 >>Metrics, quality assurance, and KPI.
 
