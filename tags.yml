@@ -312,3 +312,17 @@
   kind: governance
   gloss_ref: requirements_lifecycle_management
   deprecated: false
+
+- key: decision_gate
+  label: "Decision Gate"
+  description: "Named acceptance thresholds (A–D) that govern releases/rollbacks."
+  kind: "governance"
+  gloss_ref: "evaluator"
+  deprecated: false
+
+- key: evidence_feed
+  label: "Evidence Feed"
+  description: "Chronological list of evaluator_action events & attached artifacts."
+  kind: "telemetry"
+  gloss_ref: "evaluator"
+  deprecated: false
