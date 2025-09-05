@@ -1,11 +1,10 @@
 ### ⚖️ The Evaluator — Sun (Delivery & Insight)
-Release gates & an evidence board that turns module telemetry into go/no-go decisions.
-**Feeds:** 📡 Signal • 🧮 Bank • 🚀 Launch • 🫀 Archive  
-**Publishes:** Gates A–D • Evidence feed • Power BI snapshots
-
 
 >>Metrics, quality assurance, and KPI.
 
+Release gates & an evidence board that turns module telemetry into go/no-go decisions.
+**Feeds:** 📡 Signal • 🧮 Bank • 🚀 Launch • 🫀 Archive  
+**Publishes:** Gates A–D • Evidence feed • Power BI snapshots
 **Role in the constellation:** Sun of the Delivery & Insight orbit.  
 **What it does:** Acts as a referee and evidence board—aggregating telemetry & KPIs, applying explicit gates, and publishing a single release decision.
 
