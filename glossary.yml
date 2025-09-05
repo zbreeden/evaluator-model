@@ -1234,3 +1234,13 @@
     course: IBM Data Analytics
     module: Module 2 – File Formats
   status: draft
+
+- key: evaluator
+  term: "The Evaluator"
+  definition: >
+    The Delivery & Insight Sun: an evidence board with explicit release gates.
+    It aggregates telemetry and KPIs from other modules and publishes a single status for stakeholders.
+  examples:
+    - "Gate B passed after ROC-AUC ≥ 0.85 vs. baseline"
+    - "Evidence feed shows Signal campaign events with tags from Archive"
+  see_also: ["signal", "bank", "launch", "archive", "player", "grower", "decision_gate"]
