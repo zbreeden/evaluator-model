@@ -1,0 +1,27 @@
+{
+  "id": "2025-09-10T20:00:00Z-evaluator-broadcast-seed",
+  "ts_utc": "2025-09-10T20:00:00Z",
+  "date": "2025-09-10",
+  "module": "The Evaluator",
+  "repo": "evaluator-model",
+  "title": "Master star broadcast seed initialized",
+  "summary": "Bootstrapped constellation broadcasting: schema, nightly pulse, and Signal renderer.",
+  "tags": ["broadcasting", "schema", "renderer", "pulse"],
+  "rating": "high",
+  "origin": {
+    "name": "The Evaluator",
+    "url": "https://zbreeden.github.io/evaluator-model/",
+    "emoji": "🧮"
+  },
+  "links": {
+    "readme": "https://github.com/zbreeden/evaluator-model#readme",
+    "page": "https://zbreeden.github.io/evaluator-model/",
+    "data": "https://github.com/zbreeden/evaluator-model/tree/main/signals",
+    "runbook": "https://github.com/zbreeden/evaluator-model/blob/main/RUNBOOK.md"
+  },
+  "payload": {
+    "notes": "This is the top-level aggregator in The Evaluator. Nightly pulse pulls latest.json from each star."
+  },
+  "checksum": "",
+  "version": "1.0.0"
+}
