@@ -1,44 +1,17 @@
-[
 {
-  "id": "2025-09-13T21:30:00Z-evaluator-qa-seed",
-  "ts_utc": "2025-09-13T21:30:00Z",
-  "date": "2025-09-13",
-  "module": "The Evaluator",
-  "repo": "evaluator-model",
-  "title": "Q&A Entry — Using ML as Skill Building",
-  "summary": "Captured the insight that aspiring DAs can use ML not as a shortcut, but as a collaborator to learn and scaffold solutions.",
-  "tags": ["qa", "ml", "learning", "analyst"],
-  "rating": "high",
+  "id": "20250923T020713Z-evaluator-model-genesis",
+  "ts_utc": "2025-09-23T02:07:13Z",
+  "date": "2025-09-23",
+  "module": "Evaluator Model",
+  "repo": "evaluator-model", 
+  "title": "New constellation star initialized",
+  "summary": "Generated module scaffold with seedset distribution and basic broadcast structure.",
+  "tags": ["genesis", "scaffold", "module", "delivery-insight"],
+  "rating": "normal",
   "origin": {
-    "name": "The Evaluator",
+    "name": "Evaluator Model",
     "url": "https://zbreeden.github.io/evaluator-model/",
-    "emoji": "🧮"
-  },
-  "links": {
-    "readme": "https://github.com/zbreeden/evaluator-model#readme",
-    "page": "https://zbreeden.github.io/evaluator-model/",
-    "data": "https://github.com/zbreeden/evaluator-model/tree/main/signals"
-  },
-  "payload": {
-    "notes": "Q&A reflection stored: 'As an aspiring DA, I use ML to build my skillset by shaping outputs into governed, production-ready solutions.'"
-  },
-  "checksum": "",
-  "version": "1.0.0"
-},
-{
-  "id": "2025-09-10T20:00:00Z-evaluator-broadcast-seed",
-  "ts_utc": "2025-09-10T20:00:00Z",
-  "date": "2025-09-10",
-  "module": "The Evaluator",
-  "repo": "evaluator-model",
-  "title": "Master star broadcast seed initialized",
-  "summary": "Bootstrapped constellation broadcasting: schema, nightly pulse, and Signal renderer.",
-  "tags": ["broadcasting", "schema", "renderer", "pulse"],
-  "rating": "high",
-  "origin": {
-    "name": "The Evaluator",
-    "url": "https://zbreeden.github.io/evaluator-model/",
-    "emoji": "🧮"
+    "emoji": "🧠"
   },
   "links": {
     "readme": "https://github.com/zbreeden/evaluator-model#readme",
@@ -47,9 +20,11 @@
     "runbook": "https://github.com/zbreeden/evaluator-model/blob/main/RUNBOOK.md"
   },
   "payload": {
-    "notes": "This is the top-level aggregator in The Evaluator. Nightly pulse pulls latest.json from each star."
+    "orbit": "delivery-insight",
+    "status": "seed", 
+    "module_key": "evaluator_model",
+    "notes": "Initial scaffold created by new-module.sh script. Ready for customization and development."
   },
   "checksum": "",
   "version": "1.0.0"
 }
-]
