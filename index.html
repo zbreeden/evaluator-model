@@ -1,312 +1,89 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- The Evaluator — Delivery & Insight Sun -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>⚖️ The Evaluator — Delivery & Insight Sun</title>
-  <meta name="description" content="Release gates & an evidence board that turns telemetry and KPIs into go/no-go decisions." />
-  <meta name="color-scheme" content="light dark" />
-
-  <!-- Google Tag Manager (replace with your container if different) -->
-  <script>
-  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
-    var f=d.getElementsByTagName(s)[0], j=d.createElement(s), dl=l!='dataLayer'?'&l='+l:'';
-    j.async=true; j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-    f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-WVC4SNLB'); /* ← your GTM ID */
-  </script>
-  <!-- End Google Tag Manager -->
-
-  <style>
-    :root{
-      --bg:#0b0d10; --card:#111418; --text:#e7edf5; --muted:#9aa4af; --accent:#7aa2ff; --border:#263040; --good:#3cc76a; --bad:#ff667a; --pending:#ffc466;
-    }
-    @media (prefers-color-scheme: light){
-      :root{ --bg:#f7f9fc; --card:#ffffff; --text:#0b1220; --muted:#4a5568; --accent:#365cff; --border:#e6edf5; --good:#1f9d55; --bad:#d6455d; --pending:#b7791f; }
-    }
-    *{box-sizing:border-box}
-    body{margin:0; font:16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji"; background:var(--bg); color:var(--text)}
-    a{color:var(--accent); text-decoration:none}
-    header{position:sticky; top:0; backdrop-filter:saturate(180%) blur(8px); background:color-mix(in oklab, var(--bg) 85%, transparent); border-bottom:1px solid var(--border)}
-    .wrap{max-width:1100px; margin:0 auto; padding:16px}
-    .title{display:flex; align-items:center; gap:12px}
-    .title h1{margin:0; font-size:22px}
-    .subtitle{color:var(--muted); margin-top:2px}
-    .tag{display:inline-block; padding:.2rem .55rem; border:1px solid var(--border); border-radius:999px; font-size:12px; color:var(--muted)}
-    .row{display:flex; gap:16px; flex-wrap:wrap}
-    .cols{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:16px}
-    @media (max-width:900px){ .cols{grid-template-columns:1fr} }
-    .card{background:var(--card); border:1px solid var(--border); border-radius:16px; padding:16px}
-    .card h2{margin:0 0 10px}
-    .pill{display:inline-flex; align-items:center; gap:.5ch; padding:.25rem .6rem; border-radius:999px; border:1px solid var(--border); color:var(--muted); font-size:12px}
-    .cta{display:flex; flex-wrap:wrap; gap:10px; margin:12px 0 0}
-    .btn{display:inline-flex; align-items:center; gap:.6ch; padding:.55rem .9rem; border-radius:12px; border:1px solid var(--border); background:transparent; color:var(--text); cursor:pointer}
-    .btn:hover{border-color:var(--accent)}
-    .grid{display:grid; grid-template-columns:repeat(12,1fr); gap:16px}
-    .span-8{grid-column:span 8}
-    .span-4{grid-column:span 4}
-    @media (max-width:1000px){ .grid{grid-template-columns:1fr} .span-8,.span-4{grid-column:1} }
-    table{width:100%; border-collapse:collapse}
-    th, td{padding:10px 8px; text-align:left}
-    thead th{border-bottom:1px solid var(--border); color:var(--muted); font-weight:600}
-    tbody tr{border-bottom:1px dashed var(--border)}
-    select{background:transparent; color:var(--text); border:1px solid var(--border); border-radius:10px; padding:.3rem .5rem}
-    .legend{display:flex; gap:8px; align-items:center; color:var(--muted); font-size:13px}
-    .dot{width:.7rem; height:.7rem; border-radius:50%}
-    .good{background:var(--good)} .bad{background:var(--bad)} .pending{background:var(--pending)}
-    .feed{list-style:none; margin:0; padding:0; display:grid; gap:10px}
-    .feed li{border:1px dashed var(--border); border-radius:12px; padding:10px; font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:12px; color:var(--muted)}
-    footer{color:var(--muted); border-top:1px solid var(--border); margin-top:20px}
-    .spokes a{margin-right:10px}
-    .small{font-size:13px; color:var(--muted)}
-    .kbd{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:12px; border:1px solid var(--border); padding:.1rem .35rem; border-radius:6px; color:var(--muted)}
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Evaluator Model - FourTwenty Analytics</title>
+  <meta name="description" content="The Evaluator is the sucess metric">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🧠</text></svg>">
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WVC4SNLB" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
-
   <header>
-    <div class="wrap">
-      <div class="title">
-        <div style="font-size:22px">⚖️</div>
-        <div>
-          <h1>The Evaluator</h1>
-          <div class="subtitle">Release gates & evidence board for Delivery & Insight</div>
-        </div>
-        <div style="margin-left:auto; display:flex; gap:8px; align-items:center; flex-wrap:wrap">
-          <a class="tag" href="https://zbreeden.github.io/FourTwentyAnalytics/">← Hub</a>
-          <span class="tag">Orbit: Delivery &amp; Insight</span>
-          <span class="tag">Role: Sun</span>
-        </div>
-      </div>
-    </div>
+    <h1>🧠 Evaluator Model</h1>
+    <p>The Evaluator is the sucess metric</p>
+    <nav>
+      <a href="https://zbreeden.github.io/FourTwentyAnalytics/">← Back to Hub</a> |
+      <a href="https://github.com/zbreeden/evaluator-model">Repository</a> |
+      <a href="https://github.com/zbreeden/FourTwentyAnalytics">Hub Source</a>
+    </nav>
   </header>
-
-  <main class="wrap" id="top">
-    <section class="card">
-      <h2>What this Sun does</h2>
-      <p class="small">Aggregates telemetry (GA4 via GTM) and KPIs from sibling modules, applies explicit Decision Gates (A–D), and publishes a go / no-go / learn status — auditable and Power BI–friendly.</p>
-      <div class="cta">
-        <a class="btn" id="open-readme" target="_blank" rel="noopener">📜 Open README</a>
-        <a class="btn" id="open-repo" target="_blank" rel="noopener">📦 View Repo</a>
-        <a class="btn" href="./artifacts/" target="_blank" rel="noopener">📊 BI Snapshots</a>
-        <button class="btn" id="btn-test-event">🛰️ Emit Test Event</button>
-      </div>
-      <div class="spokes small" style="margin-top:10px">
-        Feeds: <a href="https://zbreeden.github.io/signal-model/" data-mod="signal">📡 Signal</a> •
-        <a href="https://zbreeden.github.io/bank-model/" data-mod="bank">🧮 Bank</a> •
-        <a href="https://zbreeden.github.io/launch-model/" data-mod="launch">🚀 Launch</a> •
-        <a href="https://zbreeden.github.io/archive-model/" data-mod="archive">🫀 Archive</a>
-      </div>
+  
+  <main>
+    <section>
+      <h2>🌌 Constellation Info</h2>
+      <ul>
+        <li><strong>Orbit</strong>: delivery-insight</li>
+        <li><strong>Status</strong>: seed</li>  
+        <li><strong>Module Key</strong>: <code>evaluator_model</code></li>
+      </ul>
     </section>
-
-    <div class="grid" style="margin-top:16px">
-      <section class="card span-8" id="gates">
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:12px">
-          <h2>Decision Gates</h2>
-          <div class="legend">
-            <span class="dot pending"></span> pending
-            <span class="dot good"></span> pass
-            <span class="dot bad"></span> fail
-          </div>
-        </div>
-        <table>
-          <thead>
-            <tr>
-              <th>Gate</th>
-              <th>Criteria</th>
-              <th>Status</th>
-              <th>Owner</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Gate A — Data Quality</td>
-              <td>Freshness ≥ 95%, Validity ≥ 99%</td>
-              <td>
-                <select data-gate="Gate A">
-                  <option value="pending" selected>pending</option>
-                  <option value="pass">pass</option>
-                  <option value="fail">fail</option>
-                </select>
-              </td>
-              <td>ZB</td>
-            </tr>
-            <tr>
-              <td>Gate B — Model Performance</td>
-              <td>ROC-AUC ≥ 0.85 vs baseline</td>
-              <td>
-                <select data-gate="Gate B">
-                  <option value="pending" selected>pending</option>
-                  <option value="pass">pass</option>
-                  <option value="fail">fail</option>
-                </select>
-              </td>
-              <td>ZB</td>
-            </tr>
-            <tr>
-              <td>Gate C — Delivery Readiness</td>
-              <td>WIP cap maintained, no P1 defects</td>
-              <td>
-                <select data-gate="Gate C">
-                  <option value="pending" selected>pending</option>
-                  <option value="pass">pass</option>
-                  <option value="fail">fail</option>
-                </select>
-              </td>
-              <td>ZB</td>
-            </tr>
-            <tr>
-              <td>Gate D — Telemetry</td>
-              <td>GTM/GA4 events verified, no PII</td>
-              <td>
-                <select data-gate="Gate D">
-                  <option value="pending" selected>pending</option>
-                  <option value="pass">pass</option>
-                  <option value="fail">fail</option>
-                </select>
-              </td>
-              <td>ZB</td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="cta" style="margin-top:12px">
-          <button class="btn" id="btn-export">📤 Export Gate Status (JSON)</button>
-        </div>
-        <pre id="export-out" class="small" style="margin-top:10px; white-space:pre-wrap"></pre>
-      </section>
-
-      <section class="card span-4" id="evidence">
-        <h2>Evidence Feed</h2>
-        <ul class="feed" id="feed"></ul>
-        <p class="small" style="margin-top:8px">Shows recent <span class="kbd">evaluator_action</span> events captured client-side. GA4 will receive the same payload via GTM.</p>
-      </section>
-    </div>
-
-    <section class="card" id="fit" style="margin-top:16px">
-      <h2>Constellation Fit</h2>
-      <div class="cols">
-        <div>
-          <h3>Feeds (inputs)</h3>
-          <ul>
-            <li>📡 Signal — UX events & campaigns</li>
-            <li>🧮 Bank — Delivery KPIs (WIP, lead time, throughput)</li>
-            <li>🚀 Launch — Release candidates & PR checklist</li>
-            <li>🫀 Archive — Glossary & tags labeling evidence</li>
-            <li>🎲 Player — Scenario/risk thresholds (optional)</li>
-            <li>🌱 Grower — Experiment results & lift (optional)</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Publishes (outputs)</h3>
-          <ul>
-            <li>Decision Gate table (A–D) with pass/fail rationale</li>
-            <li>Evidence Feed (latest <span class="kbd">evaluator_action</span>)</li>
-            <li>Power BI snapshots → <code>/artifacts/</code></li>
-          </ul>
-        </div>
+    
+    <section>
+      <h2>📡 Latest Signal</h2>
+      <div id="signal-container">
+        <p><em>Loading signal data...</em></p>
       </div>
     </section>
-
-    <section class="card" id="readme" style="margin-top:16px">
-      <h2>README (auto-render)</h2>
-      <div id="readme-panel" class="small" style="white-space:pre-wrap"></div>
-    </section>
-
-    <footer class="wrap" style="padding:0">
-      <div class="wrap" style="padding:16px 0">Updated <span id="updated"></span></div>
-    </footer>
   </main>
+  
+  <footer>
+    <p>Part of the <a href="https://zbreeden.github.io/FourTwentyAnalytics/">FourTwenty Analytics</a> constellation</p>
+  </footer>
 
   <script>
-    // ─────────────────────────────────────────────────────────────────────────────
-    // Telemetry: evaluator_action events into dataLayer + on-page Evidence Feed
-    // ─────────────────────────────────────────────────────────────────────────────
-    window.dataLayer = window.dataLayer || [];
-
-    const FEED = document.getElementById('feed');
-    const MAX_FEED = 10;
-
-    function evalEvent(action, ctx={}){
-      const payload = {
-        event: 'evaluator_action',
-        module: 'evaluator',
-        orbit: 'delivery_insight',
-        action,
-        ...ctx,
-        ts: new Date().toISOString()
-      };
-      // Push to GTM/GA4
-      window.dataLayer.push(payload);
-      // Mirror into local feed for immediate observability
-      const li = document.createElement('li');
-      li.textContent = JSON.stringify(payload);
-      FEED.prepend(li);
-      while(FEED.children.length > MAX_FEED){ FEED.removeChild(FEED.lastChild); }
+    // Load and display latest signal data
+    async function loadSignalData() {
+      try {
+        const response = await fetch('./signals/latest.json');
+        if (!response.ok) {
+          throw new Error('Signal data not available');
+        }
+        
+        const signal = await response.json();
+        const container = document.getElementById('signal-container');
+        
+        container.innerHTML = `
+          <div style="border: 1px solid #ddd; padding: 1rem; border-radius: 8px; background: #f9f9f9;">
+            <h3>${signal.emoji || '📡'} ${signal.title}</h3>
+            <p><strong>Summary:</strong> ${signal.summary}</p>
+            <p><strong>Broadcast Time:</strong> ${new Date(signal.ts_utc).toLocaleString()}</p>
+            <p><strong>Rating:</strong> <span style="
+              background: ${signal.rating === 'critical' ? '#ff4444' : 
+                         signal.rating === 'high' ? '#ff8800' : 
+                         signal.rating === 'normal' ? '#4CAF50' : '#888'}; 
+              color: white; 
+              padding: 2px 8px; 
+              border-radius: 4px; 
+              font-size: 0.8em;">${signal.rating}</span></p>
+            ${signal.tags && signal.tags.length > 0 ? 
+              `<p><strong>Tags:</strong> ${signal.tags.map(tag => 
+                `<span style="background: #e1e8ed; padding: 2px 6px; border-radius: 12px; font-size: 0.8em; margin-right: 4px;">${tag}</span>`
+              ).join('')}</p>` : ''}
+            ${signal.payload && signal.payload.notes ? 
+              `<details>
+                <summary>📋 Additional Notes</summary>
+                <p style="margin-top: 0.5rem; padding: 0.5rem; background: white; border-radius: 4px;">${signal.payload.notes}</p>
+              </details>` : ''}
+          </div>
+        `;
+      } catch (error) {
+        document.getElementById('signal-container').innerHTML = 
+          '<p style="color: #888;"><em>Signal data not yet available. Generate signals/latest.json to see broadcast information.</em></p>';
+      }
     }
-
-    // Gate status change → event
-    document.querySelectorAll('select[data-gate]').forEach(sel => {
-      sel.addEventListener('change', e => {
-        const gate = sel.getAttribute('data-gate');
-        const status = sel.value;
-        evalEvent('gate_status_change', { gate, status });
-      });
-    });
-
-    // Test event button
-    document.getElementById('btn-test-event').addEventListener('click', () => {
-      evalEvent('test_ping', { note: 'manual test from UI' });
-    });
-
-    // Export gate status as JSON for PR comments or /artifacts/
-    document.getElementById('btn-export').addEventListener('click', () => {
-      const gates = {};
-      document.querySelectorAll('select[data-gate]').forEach(sel => {
-        gates[sel.getAttribute('data-gate')] = sel.value;
-      });
-      const out = { exported_at: new Date().toISOString(), gates };
-      document.getElementById('export-out').textContent = JSON.stringify(out, null, 2);
-      evalEvent('export_gates', { gates });
-    });
-
-    // Spoke navigation tracking
-    document.querySelectorAll('.spokes a[data-mod]').forEach(a => {
-      a.addEventListener('click', () => evalEvent('nav_to_module', { to: a.dataset.mod }));
-    });
-
-    // ─────────────────────────────────────────────────────────────────────────────
-    // README auto-render (plain markdown fallback) & Repo/README links
-    // ─────────────────────────────────────────────────────────────────────────────
-    const pathParts = location.pathname.split('/').filter(Boolean);
-    const inferredRepo = pathParts.length ? pathParts[0] : 'evaluator-model';
-    const inferredUser = (location.hostname.split('.')[0] || 'zbreeden');
-    const BRANCH = 'main';
-
-    const RAW_README = `https://raw.githubusercontent.com/${inferredUser}/${inferredRepo}/${BRANCH}/README.md`;
-    const REPO_URL   = `https://github.com/${inferredUser}/${inferredRepo}`;
-    const README_URL = `${REPO_URL}/blob/${BRANCH}/README.md`;
-
-    document.getElementById('open-repo').href = REPO_URL;
-    const openReadme = document.getElementById('open-readme');
-    openReadme.href = README_URL;
-
-    fetch(RAW_README)
-      .then(r => r.ok ? r.text() : Promise.reject(r.status))
-      .then(md => {
-        document.getElementById('readme-panel').textContent = md;
-        evalEvent('readme_loaded', { bytes: md.length });
-      })
-      .catch(() => {
-        document.getElementById('readme-panel').innerHTML = `Could not load README via raw URL. <a href="${README_URL}" target="_blank" rel="noopener">Open on GitHub</a>.`;
-        evalEvent('readme_error');
-      });
-
-    // Updated stamp
-    document.getElementById('updated').textContent = new Date().toLocaleString();
+    
+    // Load signal data when page loads
+    loadSignalData();
   </script>
 </body>
 </html>
