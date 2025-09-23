@@ -1,31 +1,32 @@
-### ⚖️ The Evaluator — Sun (Delivery & Insight)
+# Evaluator Model
 
->>Metrics, quality assurance, and KPI.
+> **The Evaluator is the sucess metric**
 
-Release gates & an evidence board that turns module telemetry into go/no-go decisions.
-**Feeds:** 📡 Signal • 🧮 Bank • 🚀 Launch • 🫀 Archive  
-**Publishes:** Gates A–D • Evidence feed • Power BI snapshots
-**Role in the constellation:** Sun of the Delivery & Insight orbit.  
-**What it does:** Acts as a referee and evidence board—aggregating telemetry & KPIs, applying explicit gates, and publishing a single release decision.
+## 🌌 Constellation Information
 
-MIT License
+- **Module Key**: `evaluator_model`  
+- **Repository**: `evaluator-model`
+- **Orbit**: `delivery-insight`
+- **Status**: `seed`
+- **Emoji**: 🧠
 
-Copyright (c) 2025 Zach Breeden
+## 🚀 Quick Start
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+1. **Review seeds/**: Adapt seeded data for this module
+2. **Configure schemas/**: Update schema definitions as needed  
+3. **Generate signals/**: Create latest.json broadcast file
+4. **Run validation**: `scripts/validate.sh`
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+## 📡 Broadcasting
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+This module produces a `signals/latest.json` file conforming to the constellation's broadcast schema. The Signal (📡) aggregates these across all stars.
+
+## 🔗 Constellation Links
+
+- **Hub**: [FourTwenty Analytics](https://github.com/zbreeden/FourTwentyAnalytics)
+- **Archive**: Glossary, tags, and canonical definitions
+- **Signal**: Cross-constellation broadcasting and telemetry
+
+---
+
+*This star is part of the FourTwenty Analytics constellation - a modular analytics sandbox where each repository is a specialized "model" within an orbital system.*
