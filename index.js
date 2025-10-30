@@ -9,11 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		const cta = document.querySelector('a.cta[href="./model.html"]');
 		if (!cta) return; // nothing to attach to
 		const parent = cta.parentElement || document.body;
-		// Create meta if missing
-		if (!meta) {
-			meta = document.createElement('div'); meta.className = 'doc-meta'; meta.textContent = '';
-			parent.appendChild(meta);
-		}
 		// Create toggle if missing
 		if (!toggle) {
 			toggle = document.createElement('button');
@@ -24,6 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
 			toggle.textContent = 'Show doc';
 			toggle.style.marginLeft = '0.5rem';
 			parent.appendChild(toggle);
+		}
+		// Create meta if missing (append after the toggle so it appears below the button)
+		if (!meta) {
+			meta = document.createElement('div'); meta.className = 'doc-meta'; meta.textContent = '';
+			parent.appendChild(meta);
 		}
 		// Create container if missing
 		if (!container) {
@@ -74,6 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
 				cta.setAttribute('tabindex', '-1');
 				cta.style.pointerEvents = 'none';
 				cta.style.opacity = '0.6';
+				// simple tooltip for users
+				cta.setAttribute('title', 'In development');
 				// also prevent default on click (extra safety)
 				cta.addEventListener('click', (ev) => { ev.preventDefault(); }, { capture: true });
 			}
