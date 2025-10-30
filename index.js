@@ -74,8 +74,9 @@ document.addEventListener('DOMContentLoaded', () => {
 				cta.setAttribute('tabindex', '-1');
 				cta.style.pointerEvents = 'none';
 				cta.style.opacity = '0.6';
-				// simple tooltip for users
-				cta.setAttribute('title', 'In development');
+				// change the label to indicate development status and add a tooltip
+				cta.textContent = 'Model in Development';
+				cta.setAttribute('title', 'Model in Development');
 				// also prevent default on click (extra safety)
 				cta.addEventListener('click', (ev) => { ev.preventDefault(); }, { capture: true });
 			}
