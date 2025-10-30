@@ -16,13 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
 			toggle.type = 'button';
 			toggle.setAttribute('data-src', './data/external/optimization.md');
 			toggle.setAttribute('aria-pressed', 'false');
-			toggle.textContent = 'Show doc';
+			toggle.textContent = 'Show Project README';
 			toggle.style.marginLeft = '0.5rem';
 			parent.appendChild(toggle);
 		}
 		// Create meta if missing (append after the toggle so it appears below the button)
 		if (!meta) {
-			meta = document.createElement('div'); meta.className = 'doc-meta'; meta.textContent = '';
+			meta = document.createElement('div'); meta.className = 'doc-meta'; meta.textContent = 'This model is in development.';
 			parent.appendChild(meta);
 		}
 		// Create container if missing
