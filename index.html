@@ -4,41 +4,39 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Evaluator Model - FourTwenty Analytics</title>
-  <meta name="description" content="The Firm is the success metric.">
+  <meta name="description" content="The Evaluator is the sucess metric">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🧠</text></svg>">
   <!-- Markdown renderer + sanitizer (used by README section) -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/dompurify@2.4.0/dist/purify.min.js"></script>
     <style>
     .cta { display:inline-block; margin-top:.75rem; padding:.6rem 1rem; border-radius:8px;
-      background:#0f4c81; color:#fff; text-decoration:none; font-weight:600 }
+           background:#0f4c81; color:#fff; text-decoration:none; font-weight:600 }
     .cta:hover { filter:brightness(1.05) }
-    .doc-meta { color:#666; font-size:.95rem; margin-top:0.5rem }
-    .doc-toggle { display:inline-block; margin-top:.5rem; padding:0.4rem 0.75rem; border-radius:6px; border:1px solid #0f4c81; background:#fff; color:#0f4c81; cursor:pointer; font-weight:600 }
-    .doc-toggle:disabled { opacity:0.6; cursor:default }
-    .external-markdown { margin-top:0.75rem; max-height:60vh; overflow:auto }
+    .subtle { color:#666; font-size:.95rem }
   </style>
 </head>
 <body>
   <header>
     <h1>🧠 Evaluator Model</h1>
-    <p>The Evaluator is the success metric.</p>
-    <nav>
-      <a href="https://zbreeden.github.io/FourTwentyAnalytics/">← Back to Hub</a> |
-      <a href="https://github.com/zbreeden/evaluator-model">Repository</a> |
-      <a href="https://github.com/zbreeden/FourTwentyAnalytics">Hub Source</a>
-    </nav>
-        <p><a class="cta" href="./model.html">Open Model →</a></p>
-    </header>
-    <main>
-      <section>
+    <!-- Minimal model setup: a single development button and README toggle -->
+    <p>
+      <button id="model-btn" class="cta" type="button">Model in Development</button>
+      <!-- Header toggle: shows the model's small README stored in data/external (fraud.md) -->
+      <button id="readme-external-toggle" type="button" aria-expanded="false" style="margin-left:.5rem; padding:.45rem .75rem; border-radius:6px; border:1px solid #ccc; background:#fff; cursor:pointer;">Show Model README</button>
+    </p>
+    <div id="readme-external-container" style="margin-top:0.75rem; display:none; background:#fff; padding:0.75rem; border-radius:6px; border:1px solid #eee; max-height:60vh; overflow:auto;"></div>
+  </header>
+  
+  <main>
+    <section>
       <h2>🌌 Constellation Info</h2>
       <ul>
         <li><strong>Orbit</strong>: 📈</li>
         <li><strong>Status</strong>: 🌿</li>  
         <li><strong>Module Key</strong>: <code>evaluator_model</code></li>
       </ul>
-      </section>
+    </section>
 
     <section>
       <h2>📡 Latest Signal</h2>
@@ -60,6 +58,10 @@
       <div id="progress-container" style="margin-top: 1rem; display: none;"></div>
     </section>
 
+    <!-- Two README renderers: header shows data/external/fraud.md (small model README);
+         footer shows protector-model/README.md (the full module README) -->
+
+    <!-- Footer README: module root README.md (matches Evaluator UI) -->
     <section>
       <h2>📘 README</h2>
       <div style="margin-top: 0.5rem;">
@@ -144,10 +146,92 @@
       }
     });
 
-    // README renderer
+    // --- Progress (funnel) renderer ---
+    const progressToggle = document.getElementById('progress-toggle');
+    const progressContainer = document.getElementById('progress-container');
+    let progressLoaded = false;
+    progressToggle && progressToggle.addEventListener('click', async () => {
+      const expanded = progressToggle.getAttribute('aria-expanded') === 'true';
+      if (expanded) {
+        progressContainer.style.display = 'none';
+        progressToggle.textContent = 'Show progress';
+        progressToggle.setAttribute('aria-expanded', 'false');
+        return;
+      }
+      progressContainer.style.display = 'block';
+      progressToggle.textContent = 'Hide progress';
+      progressToggle.setAttribute('aria-expanded', 'true');
+      if (progressLoaded) return;
+      progressContainer.innerHTML = '<p><em>Loading progress data...</em></p>';
+      try {
+        const resp = await fetch('./signals/funnel_progress.json');
+        if (!resp.ok) throw new Error('Progress data not available');
+        const doc = await resp.json();
+        const trainings = doc.trainings || {};
+        const keys = Object.keys(trainings);
+        if (keys.length === 0) {
+          progressContainer.innerHTML = '<p style="color:#666;"><em>No progress data found.</em></p>';
+          progressLoaded = true; return;
+        }
+        const grid = document.createElement('div'); grid.style.display = 'grid'; grid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(220px, 1fr))'; grid.style.gap = '0.75rem';
+        keys.forEach(k => {
+          const t = trainings[k];
+          const card = document.createElement('div'); card.style.border = '1px solid #e3e3e3'; card.style.padding = '0.75rem'; card.style.borderRadius = '8px'; card.style.background = '#fff';
+          const title = document.createElement('h4'); title.style.margin = '0 0 0.25rem 0'; title.textContent = t.title || k;
+          const meta = document.createElement('div'); meta.style.fontSize = '0.85rem'; meta.style.color = '#666'; meta.style.marginBottom = '0.5rem';
+          const rawPercent = (typeof t.percent_complete === 'number' || typeof t.percent_complete === 'string') ? Number(t.percent_complete) : null;
+          let displayPercent = null; if (rawPercent !== null && !isNaN(rawPercent)) displayPercent = rawPercent > 1 ? rawPercent : rawPercent * 100;
+          const percentText = displayPercent !== null ? (Math.round(displayPercent * 100) / 100) + '%' : '—';
+          const totalSteps = t.steps_total || 0; meta.textContent = `${ totalSteps } • ${ percentText }`;
+          const last = document.createElement('div'); const target = (typeof t.control_flow_target === 'number') ? t.control_flow_target : 150; const percentDisplay = (displayPercent !== null && !isNaN(displayPercent)) ? (Math.round(displayPercent * 10) / 10) + '%' : percentText; title.textContent = `${t.title || k} — Target: ${target} — ${percentDisplay}`;
+          last.style.fontSize = '0.85rem'; last.style.color = '#888'; last.style.marginBottom = '0.5rem'; last.textContent = t.last_activity ? `Last: ${new Date(t.last_activity).toLocaleDateString()}` : '';
+          const progressBarWrap = document.createElement('div'); progressBarWrap.style.background = '#f1f5f8'; progressBarWrap.style.height = '10px'; progressBarWrap.style.borderRadius = '999px'; progressBarWrap.style.overflow = 'hidden';
+          const progressBar = document.createElement('div'); progressBar.style.height = '100%'; const barPercent = displayPercent !== null ? Math.min(Math.max(displayPercent, 0), 100) : 0; progressBar.style.width = `${barPercent}%`; progressBar.style.background = '#4CAF50'; progressBarWrap.appendChild(progressBar);
+          const details = document.createElement('details'); const summaryEl = document.createElement('summary'); summaryEl.textContent = 'Steps'; details.appendChild(summaryEl);
+          const stepsList = document.createElement('ul'); stepsList.style.margin = '0.5rem 0 0 1rem'; (t.steps || []).forEach(s => { const li = document.createElement('li'); const stepName = (s && (s.step_id_name || s.title || s.id || s.step_id)) || String(s); const count = s && (s.count || s.count === 0) ? `(${s.count})` : ''; const status = s && s.status ? ` ${s.status}` : ''; li.textContent = `${stepName} ${count}${status}`.trim(); stepsList.appendChild(li); }); details.appendChild(stepsList);
+          card.appendChild(title); card.appendChild(meta); card.appendChild(last); card.appendChild(progressBarWrap); card.appendChild(details); grid.appendChild(card);
+        });
+        progressContainer.innerHTML = ''; progressContainer.appendChild(grid); progressLoaded = true;
+      } catch (err) {
+        progressContainer.innerHTML = `<p style="color:#b00;"><em>Unable to load progress: ${err.message}</em></p>`;
+      }
+    });
+
+    // --- Header: small model README (data/external/fraud.md) ---
+    const readmeExternalToggle = document.getElementById('readme-external-toggle');
+    const readmeExternalContainer = document.getElementById('readme-external-container');
+    async function loadExternalReadme() {
+      try {
+        const resp = await fetch('./data/external/optimization.md');
+        if (!resp.ok) throw new Error('External README not available');
+        let md = await resp.text();
+        let html = md;
+        if (window.marked && typeof window.marked.parse === 'function') html = marked.parse(md);
+        if (window.DOMPurify && typeof DOMPurify.sanitize === 'function') html = DOMPurify.sanitize(html);
+        else html = '<pre>' + html.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</pre>';
+        readmeExternalContainer.innerHTML = html;
+      } catch (err) {
+        readmeExternalContainer.innerHTML = `<p style="color:#b00;"><em>Unable to load model README: ${err.message}</em></p>`;
+      }
+    }
+    readmeExternalToggle && readmeExternalToggle.addEventListener('click', async () => {
+      const expanded = readmeExternalToggle.getAttribute('aria-expanded') === 'true';
+      if (expanded) {
+        readmeExternalContainer.style.display = 'none';
+        readmeExternalToggle.textContent = 'Show Model README';
+        readmeExternalToggle.setAttribute('aria-expanded', 'false');
+        return;
+      }
+      readmeExternalContainer.style.display = 'block';
+      readmeExternalToggle.textContent = 'Hide Model README';
+      readmeExternalToggle.setAttribute('aria-expanded', 'true');
+      if (!readmeExternalContainer.dataset.loaded) { await loadExternalReadme(); readmeExternalContainer.dataset.loaded = '1'; }
+    });
+
+    // --- Footer: module root README (protector-model/README.md) ---
     const readmeToggle = document.getElementById('readme-toggle');
     const readmeContainer = document.getElementById('readme-container');
-    async function loadEvaluatorReadme() {
+    async function loadReadme() {
       try {
         const resp = await fetch('./README.md');
         if (!resp.ok) throw new Error('README not available');
@@ -161,7 +245,6 @@
         readmeContainer.innerHTML = `<p style="color:#b00;"><em>Unable to load README: ${err.message}</em></p>`;
       }
     }
-
     readmeToggle && readmeToggle.addEventListener('click', async () => {
       const expanded = readmeToggle.getAttribute('aria-expanded') === 'true';
       if (expanded) {
@@ -173,13 +256,10 @@
       readmeContainer.style.display = 'block';
       readmeToggle.textContent = 'Hide README';
       readmeToggle.setAttribute('aria-expanded', 'true');
-      if (!readmeContainer.dataset.loaded) {
-        await loadEvaluatorReadme();
-        readmeContainer.dataset.loaded = '1';
-      }
+      if (!readmeContainer.dataset.loaded) { await loadReadme(); readmeContainer.dataset.loaded = '1'; }
     });
 
-    // Load signal data when page loads
+    // initial load of the firm latest signal
     loadSignalData();
   </script>
 

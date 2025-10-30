@@ -1,26 +1,19 @@
-/* Styles for evaluator-model index page */
-.cta { display:inline-block; margin-top:.75rem; padding:.6rem 1rem; border-radius:8px;
-	background:#0f4c81; color:#fff; text-decoration:none; font-weight:600 }
-.cta:hover { filter:brightness(1.05) }
-.doc-meta { color:#666; font-size:.95rem; margin-top:0.5rem }
-.doc-toggle { display:inline-block; margin-top:.5rem; padding:0.4rem 0.75rem; border-radius:6px; border:1px solid #0f4c81; background:#fff; color:#0f4c81; cursor:pointer; font-weight:600 }
-.doc-toggle:disabled { opacity:0.6; cursor:default }
-.external-markdown { margin-top:0.75rem; max-height:60vh; overflow:auto }
+.root{--ink:#111827;--bg:#f9fafb;--muted:#6b7280;--brand:#0f4c81;--card:#ffffff;--border:#e5e7eb}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Segoe UI",Roboto,system-ui,sans-serif}
 
-/* Small utility styles used by the page */
-.subtle { color:#666; font-size:.95rem }
-button { font-family: inherit }
+/* Minimal layout & typography */
+h1{margin:.5rem 0}
+h2{margin:0 0 .5rem}
+.wrap{max-width:980px;margin:0 auto;padding:1.5rem}
+.cols{display:grid;gap:.6rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.foot{text-align:center;color:var(--muted);padding:1rem;border-top:1px solid var(--border);background:#fff;margin-top:2rem}
 
-/* Disabled/absent model CTA */
-.cta[aria-disabled="true"], .cta.disabled {
-	opacity: 0.5;
-	pointer-events: none;
-	cursor: not-allowed;
-	filter: grayscale(40%);
-}
+/* Call-to-action (model button) */
+.cta{display:inline-block;background:#fff;color:var(--brand);padding:.7rem 1.1rem;border-radius:8px;text-decoration:none;font-weight:600;border:1px solid transparent}
+.cta:hover{filter:brightness(1.03)}
 
-.cta[aria-disabled="true"]:hover { filter: none }
+/* Simple inline message shown when model button clicked */
+.simple-model-message{display:inline-block;margin-left:.6rem;font-weight:600;color:#333}
 
-/* Visible inline model hint that appears when CTA disabled */
-.model-hint { display:block; margin-top:0.4rem; color: #555; font-size:0.95rem; font-weight:600 }
-
+/* Kept intentionally minimal: removed doc-toggle, external-markdown, model-hint, and disabled-CTA rules */
