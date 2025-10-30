@@ -74,9 +74,34 @@ document.addEventListener('DOMContentLoaded', () => {
 				cta.setAttribute('tabindex', '-1');
 				cta.style.pointerEvents = 'none';
 				cta.style.opacity = '0.6';
-				// change the label to indicate development status and add a tooltip
-				cta.textContent = 'Model in Development';
-				cta.setAttribute('title', 'Model in Development');
+										// change the label to indicate development status
+										cta.textContent = 'Model in Development';
+										// Insert an inline visible hint showing the model title (from header)
+										try {
+											const header = document.querySelector('header');
+											let modelTitle = '';
+											if (header) {
+												const h1 = header.querySelector('h1');
+												const p = header.querySelector('p');
+												// prefer subtitle paragraph if it looks like a title, else use h1 without emoji
+												if (p && p.textContent.trim()) modelTitle = p.textContent.trim();
+												else if (h1 && h1.textContent.trim()) {
+													modelTitle = h1.textContent.trim().replace(/^[^\w\d]+/, '').trim();
+												}
+											}
+											if (modelTitle) {
+												// avoid duplicating hint
+												let hint = cta.parentElement.querySelector('.model-hint');
+												if (!hint) {
+													hint = document.createElement('div');
+													hint.className = 'model-hint';
+													hint.textContent = modelTitle;
+													cta.parentElement.appendChild(hint);
+												} else {
+													hint.textContent = modelTitle;
+												}
+											}
+										} catch (e) { /* ignore */ }
 				// also prevent default on click (extra safety)
 				cta.addEventListener('click', (ev) => { ev.preventDefault(); }, { capture: true });
 			}

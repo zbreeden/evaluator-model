@@ -21,3 +21,6 @@ button { font-family: inherit }
 
 .cta[aria-disabled="true"]:hover { filter: none }
 
+/* Visible inline model hint that appears when CTA disabled */
+.model-hint { display:block; margin-top:0.4rem; color: #555; font-size:0.95rem; font-weight:600 }
+
