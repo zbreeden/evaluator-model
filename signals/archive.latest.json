@@ -1,0 +1,63 @@
+[
+  {
+    "id": "20250925T193647Z-check_in",
+    "ts_utc": "2025-09-25T19:36:47Z",
+    "module": "Evaluator Model",
+    "repo": "evaluator-model",
+    "title": "Check In",
+    "summary": "The Evaluator is hoping to begin evaluating the situation soon!!!",
+    "rating": "normal",
+    "origin": {
+      "name": "Evaluator Model",
+      "url": "https://zbreeden.github.io/evaluator-model/",
+      "emoji": "🧠"
+    },
+    "status": "seed",
+    "links": {
+      "readme": "https://github.com/zbreeden/evaluator-model#readme",
+      "page": "https://zbreeden.github.io/evaluator-model/"
+    },
+    "payload": {
+      "module_key": "evaluator_model",
+      "broadcast_key": "check_in",
+      "tags": [
+        "check_in"
+      ]
+    }
+  },
+  {
+    "id": "20250923T020713Z-evaluator-model-genesis",
+    "ts_utc": "2025-09-23T02:07:13Z",
+    "date": "2025-09-23",
+    "module": "Evaluator Model",
+    "repo": "evaluator-model",
+    "title": "New constellation star initialized",
+    "summary": "Generated module scaffold with seedset distribution and basic broadcast structure.",
+    "tags": [
+      "genesis",
+      "scaffold",
+      "module",
+      "delivery-insight"
+    ],
+    "rating": "normal",
+    "origin": {
+      "name": "Evaluator Model",
+      "url": "https://zbreeden.github.io/evaluator-model/",
+      "emoji": "🧠"
+    },
+    "links": {
+      "readme": "https://github.com/zbreeden/evaluator-model#readme",
+      "page": "https://zbreeden.github.io/evaluator-model/",
+      "data": "https://github.com/zbreeden/evaluator-model/tree/main/signals",
+      "runbook": "https://github.com/zbreeden/evaluator-model/blob/main/RUNBOOK.md"
+    },
+    "payload": {
+      "orbit": "delivery-insight",
+      "status": "seed",
+      "module_key": "evaluator_model",
+      "notes": "Initial scaffold created by new-module.sh script. Ready for customization and development."
+    },
+    "checksum": "",
+    "version": "1.0.0"
+  }
+]
