@@ -1,0 +1,97 @@
+{
+  "generated_at": "2025-10-30T19:24:57Z",
+  "evaluators": {
+    "project_shelf_optimization": {
+      "id": "project_shelf_optimization",
+      "name": "Eye Level Economics",
+      "steps_total": 11,
+      "steps_completed": ["model_question_definition"],
+      "percent_complete": 9.1,
+      "last_activity": "2025-10-30",
+      "notes": "Tracks the progress of model development through various stages (e.g. naming, question_definition, data_collection/sourcing, exploration, etc.)",
+      "steps": [
+        {
+          "id": "model_question_definition",
+          "name": "How does shelf placement—eye-level, mid, or lower—affect product sales across retail categories?",
+          "completed": true,
+          "last_activity": "2025-10-09",
+          "status": "✅",
+          "notes": "The goal is to quantify the sales lift from premium placement and identify which categories yield the highest return per unit of shelf space."
+        },
+        {
+          "id": "data_collection",
+          "name": "Data Collection",
+          "completed": false,
+          "last_activity": null,
+          "status": "�",
+          "notes": "The goal is to gather data on product placement and sales across different retail categories."
+        },
+        {
+          "id": "data_cleaning",
+          "name": "Data Cleaning",
+          "completed": false,
+          "last_activity": null,
+          "status": "🌱",
+          "notes": "The goal is to clean and preprocess the data for analysis."
+        },
+        {
+          "id": "data_normalizing",
+          "name": "Data Normalization",
+          "completed": false,
+          "last_activity": null,
+          "status": "🌱",
+          "notes": "The goal is to normalize the data to ensure consistency and comparability."
+        },
+        {
+          "id": "data_exploration",
+          "name": "Data Exploration",
+          "completed": false,
+          "last_activity": null,
+          "status": "🌱",
+          "notes": "The goal is to explore the data to identify patterns and insights."
+        },
+        {
+          "id": "data_enhancement",
+          "name": "Data Enhancement",
+          "completed": false,
+          "last_activity": null,
+          "status": "🌱",
+          "notes": "Enhance the data by adding new features or improving existing ones."
+        },
+        {
+          "id": "data_visualization",
+          "name": "Data Visualization",
+          "completed": false,
+          "last_activity": null,
+          "status": "🌱",
+          "notes": "Create visualizations to better understand the relationships in the data."
+        },
+        {
+          "id": "model_building",
+          "name": "Model Building",
+          "completed": false,
+          "last_activity": null,
+          "status": "🌱",
+          "notes": "Build predictive models to analyze the impact of shelf placement on sales."
+        },
+        {
+          "id": "model_evaluation",
+          "name": "Model Evaluation",
+          "completed": false,
+          "last_activity": null,
+          "status": "🌱",
+          "notes": "Evaluate the models using appropriate metrics to ensure accuracy and reliability."
+        },
+        {
+          "id": "storytelling",
+          "name": "Storytelling",
+          "completed": false,
+          "last_activity": null,
+          "status": "🌱",
+          "notes": "Develop a compelling narrative around the findings to communicate insights effectively."
+        }
+      ]
+     }
+   }
+}
+ 
