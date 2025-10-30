@@ -40,6 +40,44 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	let loaded = false;
+
+		// Fail-safe: if none of model.html, model.js, or model.css exist, disable the Open Model CTA
+		async function assetExists(path) {
+			try {
+				// Try HEAD first (cheap), fallback to GET
+				const head = await fetch(path, { method: 'HEAD' });
+				if (head && head.ok) return true;
+			} catch (e) {
+				// fallthrough
+			}
+			try {
+				const get = await fetch(path, { method: 'GET' });
+				return get && get.ok;
+			} catch (e) {
+				return false;
+			}
+		}
+
+		(async function checkModelAssets() {
+			const cta = document.querySelector('a.cta[href="./model.html"]');
+			if (!cta) return;
+			const checks = await Promise.all([
+				assetExists('./model.html'),
+				assetExists('./model.js'),
+				assetExists('./model.css')
+			]);
+			const anyExists = checks.some(Boolean);
+			if (!anyExists) {
+				// disable the CTA (visual + accessibility)
+				cta.classList.add('disabled');
+				cta.setAttribute('aria-disabled', 'true');
+				cta.setAttribute('tabindex', '-1');
+				cta.style.pointerEvents = 'none';
+				cta.style.opacity = '0.6';
+				// also prevent default on click (extra safety)
+				cta.addEventListener('click', (ev) => { ev.preventDefault(); }, { capture: true });
+			}
+		})();
 	async function fetchAndRender(url) {
 		toggle.disabled = true;
 		try {

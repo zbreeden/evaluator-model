@@ -11,3 +11,13 @@
 .subtle { color:#666; font-size:.95rem }
 button { font-family: inherit }
 
+/* Disabled/absent model CTA */
+.cta[aria-disabled="true"], .cta.disabled {
+	opacity: 0.5;
+	pointer-events: none;
+	cursor: not-allowed;
+	filter: grayscale(40%);
+}
+
+.cta[aria-disabled="true"]:hover { filter: none }
+
