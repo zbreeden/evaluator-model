@@ -167,15 +167,15 @@
         const resp = await fetch('./signals/funnel_progress.json');
         if (!resp.ok) throw new Error('Progress data not available');
         const doc = await resp.json();
-        const trainings = doc.trainings || {};
-        const keys = Object.keys(trainings);
+        const evaluators = doc.evaluators || {};
+        const keys = Object.keys(evaluators);
         if (keys.length === 0) {
           progressContainer.innerHTML = '<p style="color:#666;"><em>No progress data found.</em></p>';
           progressLoaded = true; return;
         }
         const grid = document.createElement('div'); grid.style.display = 'grid'; grid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(220px, 1fr))'; grid.style.gap = '0.75rem';
         keys.forEach(k => {
-          const t = trainings[k];
+          const t = evaluators[k];
           const card = document.createElement('div'); card.style.border = '1px solid #e3e3e3'; card.style.padding = '0.75rem'; card.style.borderRadius = '8px'; card.style.background = '#fff';
           const title = document.createElement('h4'); title.style.margin = '0 0 0.25rem 0'; title.textContent = t.title || k;
           const meta = document.createElement('div'); meta.style.fontSize = '0.85rem'; meta.style.color = '#666'; meta.style.marginBottom = '0.5rem';
@@ -183,7 +183,7 @@
           let displayPercent = null; if (rawPercent !== null && !isNaN(rawPercent)) displayPercent = rawPercent > 1 ? rawPercent : rawPercent * 100;
           const percentText = displayPercent !== null ? (Math.round(displayPercent * 100) / 100) + '%' : '—';
           const totalSteps = t.steps_total || 0; meta.textContent = `${ totalSteps } • ${ percentText }`;
-          const last = document.createElement('div'); const target = (typeof t.control_flow_target === 'number') ? t.control_flow_target : 150; const percentDisplay = (displayPercent !== null && !isNaN(displayPercent)) ? (Math.round(displayPercent * 10) / 10) + '%' : percentText; title.textContent = `${t.title || k} — Target: ${target} — ${percentDisplay}`;
+          const last = document.createElement('div'); const target = (typeof t.control_flow_target === 'number') ? t.control_flow_target : 11; const percentDisplay = (displayPercent !== null && !isNaN(displayPercent)) ? (Math.round(displayPercent * 10) / 10) + '%' : percentText; title.textContent = `${t.title || k} — Target: ${target} — ${percentDisplay}`;
           last.style.fontSize = '0.85rem'; last.style.color = '#888'; last.style.marginBottom = '0.5rem'; last.textContent = t.last_activity ? `Last: ${new Date(t.last_activity).toLocaleDateString()}` : '';
           const progressBarWrap = document.createElement('div'); progressBarWrap.style.background = '#f1f5f8'; progressBarWrap.style.height = '10px'; progressBarWrap.style.borderRadius = '999px'; progressBarWrap.style.overflow = 'hidden';
           const progressBar = document.createElement('div'); progressBar.style.height = '100%'; const barPercent = displayPercent !== null ? Math.min(Math.max(displayPercent, 0), 100) : 0; progressBar.style.width = `${barPercent}%`; progressBar.style.background = '#4CAF50'; progressBarWrap.appendChild(progressBar);
