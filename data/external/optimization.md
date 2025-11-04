@@ -125,3 +125,36 @@ The goal is clarity, not cleverness — to show how structure and storytelling c
 - Visuals and metrics designed to educate — not to model or disclose real retailer performance  
 
 ---
+
+## Appendix A — Synthetic Data Generator
+
+The following script expands the base dataset by generating additional synthetic transactions.  
+It introduces light item-to-item correlation to simulate real-world co-purchasing patterns and stabilize rule-based models.
+
+```python
+import pandas as pd
+import numpy as np
+
+# Adjustable parameters
+n = 5000              # Number of synthetic transactions
+seed = 42             # For reproducibility
+np.random.seed(seed)
+
+# Simulate purchase patterns
+oil = np.random.binomial(1, 0.4, n)
+milk = np.random.binomial(1, 0.5, n)
+# Bread is partly dependent on Oil purchases
+bread = (oil & (np.random.rand(n) < 0.6)) | (np.random.rand(n) < 0.2)
+
+# Build the dataset
+df = pd.DataFrame({
+    "transactionID": range(1, n + 1),
+    "OilPurchased": oil,
+    "MilkPurchased": milk,
+    "BreadPurchased": bread.astype(int)
+})
+
+# Save to the expected evaluator-model location
+df.to_csv("data/external/storeshelfoptimization_synth.csv", index=False)
+
+print("Synthetic dataset created at data/external/storeshelfoptimization_synth.csv")
