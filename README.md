@@ -7,7 +7,7 @@
 - **Module Key**: `evaluator_model`  
 - **Repository**: `evaluator-model`
 - **Orbit**: 📈
-- **Status**: 🌿
+- **Status**: 🔥�
 - **Emoji**: 🧠
 
 ## 🚀 Quick Start
