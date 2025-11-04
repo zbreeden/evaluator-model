@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Store Shelf Optimization — Demo UI</title>
+  <link rel="stylesheet" href="model.css"/>
+</head>
+<body>
+  <header class="wrap">
+    <h1>Store Shelf Optimization</h1>
+    <p class="subtitle">question → data → model → storytelling</p>
+  </header>
+
+  <main class="wrap">
+    <section id="kpis" class="card">
+      <h2>Overview</h2>
+      <div id="kpi-grid" class="grid-3"></div>
+    </section>
+
+    <section id="rules" class="card">
+      <h2>High-Value Associations</h2>
+      <p class="hint">Sorted by lift, then confidence, then support.</p>
+      <div class="table-wrap">
+        <table id="rules-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Antecedent</th>
+              <th>Consequent</th>
+              <th>Support</th>
+              <th>Confidence</th>
+              <th>Lift</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="viz" class="card">
+      <h2>Basket Rates</h2>
+      <div id="bars" class="bars"></div>
+    </section>
+
+    <section id="about" class="card">
+      <h2>Storytelling</h2>
+      <p>
+        This UI mirrors the analysis rhythm you use elsewhere:
+        <em>question → data → model → visuals/storytelling</em>.
+        KPIs summarize the dataset, while the table surfaces the
+        strongest adjacency opportunities for shelf placement and promotions.
+      </p>
+    </section>
+  </main>
+
+  <footer class="wrap footer">
+    <small>FourTwenty Analytics · Evaluator</small>
+  </footer>
+
+  <script src="model.js"></script>
+</body>
+</html>
