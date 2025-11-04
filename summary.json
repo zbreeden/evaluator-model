@@ -1,0 +1,8 @@
+{
+  "total_transactions": 5000,
+  "support_threshold": 0.05,
+  "confidence_threshold": 0.3,
+  "oil_rate": 0.4002,
+  "milk_rate": 0.4848,
+  "bread_rate": 0.3884
+}

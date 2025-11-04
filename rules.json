@@ -1,0 +1,104 @@
+[
+  {
+    "antecedent": [
+      "OilPurchased",
+      "MilkPurchased"
+    ],
+    "consequent": [
+      "BreadPurchased"
+    ],
+    "support": 0.1346,
+    "confidence": 0.687436,
+    "lift": 1.769918
+  },
+  {
+    "antecedent": [
+      "MilkPurchased",
+      "BreadPurchased"
+    ],
+    "consequent": [
+      "OilPurchased"
+    ],
+    "support": 0.1346,
+    "confidence": 0.701773,
+    "lift": 1.753555
+  },
+  {
+    "antecedent": [
+      "OilPurchased"
+    ],
+    "consequent": [
+      "BreadPurchased"
+    ],
+    "support": 0.2682,
+    "confidence": 0.670165,
+    "lift": 1.72545
+  },
+  {
+    "antecedent": [
+      "BreadPurchased"
+    ],
+    "consequent": [
+      "OilPurchased"
+    ],
+    "support": 0.2682,
+    "confidence": 0.690525,
+    "lift": 1.72545
+  },
+  {
+    "antecedent": [
+      "OilPurchased",
+      "BreadPurchased"
+    ],
+    "consequent": [
+      "MilkPurchased"
+    ],
+    "support": 0.1346,
+    "confidence": 0.501864,
+    "lift": 1.035199
+  },
+  {
+    "antecedent": [
+      "BreadPurchased"
+    ],
+    "consequent": [
+      "MilkPurchased"
+    ],
+    "support": 0.1918,
+    "confidence": 0.493821,
+    "lift": 1.018607
+  },
+  {
+    "antecedent": [
+      "MilkPurchased"
+    ],
+    "consequent": [
+      "BreadPurchased"
+    ],
+    "support": 0.1918,
+    "confidence": 0.395627,
+    "lift": 1.018607
+  },
+  {
+    "antecedent": [
+      "OilPurchased"
+    ],
+    "consequent": [
+      "MilkPurchased"
+    ],
+    "support": 0.1958,
+    "confidence": 0.489255,
+    "lift": 1.00919
+  },
+  {
+    "antecedent": [
+      "MilkPurchased"
+    ],
+    "consequent": [
+      "OilPurchased"
+    ],
+    "support": 0.1958,
+    "confidence": 0.403878,
+    "lift": 1.00919
+  }
+]
