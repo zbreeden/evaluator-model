@@ -40,6 +40,12 @@ This dataset contains shelf-level product details across multiple categories, wi
 
 The data structure mimics a retail planogram: each product tied to a shelf position, allowing analysis by category and shelf tier.
 
+**Dataset Size & Synthesis Note:**  
+The base dataset includes roughly 700 rows, which limits statistical depth for association and regression modeling.  
+To better demonstrate shelf-relationship patterns, a *synthetic dataset generator* was added.  
+It uses probabilistic sampling and controlled correlation between items (e.g., Oil ↔ Bread co-purchase patterns) to create larger, reproducible datasets for exploration.  
+This ensures model outputs are rich enough to support storytelling without relying on unavailable proprietary data.
+
 ---
 
 ## 3. Analytical Approach
@@ -107,6 +113,7 @@ The goal is clarity, not cleverness — to show how structure and storytelling c
 - `shelf_dashboard.pbix` — Power BI report visualizing shelf-tier performance and what-if simulations  
 - `shelf_data_manifest.csv` — overview of dataset source, derived fields, and variable lineage  
 - `executive_brief.pdf` — concise narrative linking analysis to retail merchandising strategy  
+- `shelf_data_synth.py` — generator script to produce synthetic transactions for demo or teaching scenarios  
 
 ---
 
@@ -114,6 +121,7 @@ The goal is clarity, not cleverness — to show how structure and storytelling c
 
 - Uses open, anonymized Kaggle data; no proprietary retail data included  
 - Random seeds ensure repeatable results for demonstrations  
+- Synthetic data generation preserves structure and behavior without exposing sensitive information  
 - Visuals and metrics designed to educate — not to model or disclose real retailer performance  
 
 ---
