@@ -109,6 +109,14 @@ async function bootROI(rules, kpi){
   refresh();
 }
 
+document.getElementById("metricsBtn").addEventListener("click", () => {
+  document.getElementById("metricsModal").classList.remove("hidden");
+});
+document.getElementById("closeMetrics").addEventListener("click", () => {
+  document.getElementById("metricsModal").classList.add("hidden");
+});
+
+
 async function boot() {
   let kpi = null, rules = null;
 
