@@ -75,53 +75,9 @@ function renderBars(kpi) {
   });
 }
 
-function computeROI({rule, captureRate, avgBasket, marginPerUnit, traffic}) {
-  // rule has: support, confidence, lift
-  // Simple incremental-units proxy from lift:
-  const baselineProbB = rule.support / (rule.confidence || 1e-9); // ≈ P(B)
-  const incrementalProb = Math.max(rule.lift - 1, 0) * baselineProbB; // extra P(B) due to A
-  const realizedProb = incrementalProb * (captureRate / 100);
-  const incrUnits = realizedProb * traffic; // ~ extra units of B
-  const incrGrossMargin = incrUnits * marginPerUnit;
-  // If you later price-promo, subtract promo cost here.
-  return { incrUnits, incrGrossMargin };
-}
-
-async function bootROI(rules, kpi){
-  // pick the top rule (already sorted by lift in your table)
-  const rule = rules[0] || {support:0, confidence:0, lift:1};
-  const capture = document.getElementById('capture');
-  const captureVal = document.getElementById('captureVal');
-  const out = document.getElementById('roi-out');
-
-  // crude defaults; replace with data-backed values from your pipeline
-  const avgBasket = 1;              // baskets counted in kpi.total_transactions
-  const marginPerUnit = 1.25;       // $
-  const traffic = kpi.total_transactions * avgBasket;
-
-  function refresh(){
-    captureVal.textContent = capture.value + "%";
-    const { incrUnits, incrGrossMargin } =
-      computeROI({ rule, captureRate: +capture.value, avgBasket, marginPerUnit, traffic });
-    out.textContent = `Top rule lift=${rule.lift.toFixed(2)} → +${Math.round(incrUnits)} units, ~$${incrGrossMargin.toFixed(0)} gross margin`;
-  }
-  capture.addEventListener('input', refresh);
-  refresh();
-}
-
-document.getElementById("metricsBtn").addEventListener("click", () => {
-  document.getElementById("metricsModal").classList.remove("hidden");
-});
-document.getElementById("closeMetrics").addEventListener("click", () => {
-  document.getElementById("metricsModal").classList.add("hidden");
-});
-
-
 async function boot() {
-  let kpi = null, rules = null;
-
   try {
-    kpi = await loadJSON("./summary.json");
+    const kpi = await loadJSON("./summary.json");
     renderKPIs(kpi);
     renderBars(kpi);
   } catch (e) {
@@ -133,7 +89,7 @@ async function boot() {
   }
 
   try {
-    rules = await loadJSON("./rules.json");
+    const rules = await loadJSON("./rules.json");
     renderRulesTable(rules);
   } catch (e) {
     console.error(e);
@@ -141,11 +97,6 @@ async function boot() {
       "beforeend",
       `<p style="color:#f99">Load rules.json failed. Run shelf_op.py first.</p>`
     );
-  }
-
-  // Only boot ROI if the ROI section exists on the page
-  if (document.getElementById('roi') && kpi && rules) {
-    bootROI(rules, kpi);
   }
 }
 
