@@ -10,6 +10,17 @@
   <header class="wrap">
     <h1>Store Shelf Optimization</h1>
     <p class="subtitle">question → data → model → storytelling</p>
+    <div id="metricsModal" class="modal hidden">
+  <div class="modal-content">
+    <h2>Market Basket & ROI Metrics</h2>
+    <p><strong>Capture:</strong> portion of potential lift realized through shelf or promotion changes.</p>
+    <p><strong>Support:</strong> frequency of A and B appearing together in transactions.</p>
+    <p><strong>Confidence:</strong> probability of B given A.</p>
+    <p><strong>Lift:</strong> ratio of confidence to B’s base rate; >1 means positive association.</p>
+    <p><strong>Market Basket Proportions:</strong> base share of each item in all baskets.</p>
+    <button id="closeMetrics" class="close-btn">Close</button>
+  </div>
+</div>
   </header>
 
   <main class="wrap">
