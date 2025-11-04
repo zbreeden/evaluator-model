@@ -1,30 +1,33 @@
 {
-  "id": "20251030T154916Z-sprout_update",
-  "ts_utc": "2025-10-30T15:49:16Z",
+  "id": "20251104T022356Z-status_change",
+  "ts_utc": "2025-11-04T02:23:56Z",
   "module": "Evaluator Model",
   "repo": "evaluator-model",
-  "title": "The Evaluator Sprouts",
-  "summary": "The Evaluator was called to sprout to begin working on the new optimization model.",
+  "title": "Shelf Op Model",
+  "summary": "The Evaluator has opened up the Shelf Optimization Model",
   "rating": "critical",
   "origin": {
     "name": "Evaluator Model",
     "url": "https://zbreeden.github.io/evaluator-model/",
     "emoji": "🧠"
   },
-  "status": "sprout",
+  "status": "fired",
   "links": {
     "readme": "https://github.com/zbreeden/evaluator-model#readme",
     "page": "https://zbreeden.github.io/evaluator-model/"
   },
   "payload": {
-    "orbit": "🧠",
-    "status": "🌿",
-    "notes": "USER SKILLS - analytical architecture, data sourcing, optimization modeling, evaluation frameworks",
+    "orbit": "📈",
+    "status": "🔥",
+    "notes": "USER SKILLS - data modeling, feature engineering, model evaluation (market basket analysis), pipeline automation, Power BI integration, visualization, Python scripting, JSON/Parquet export, reproducibility",
     "module_key": "evaluator_model",
-    "broadcast_key": "sprout_update",
+    "broadcast_key": "status_change",
     "tags": [
-      "status_update",
-      "sprout"
+      "model",
+      "shelf_optimization",
+      "evaluator",
+      "status_change",
+      "python"
     ]
   }
 }
