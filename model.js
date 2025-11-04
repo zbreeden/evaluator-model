@@ -110,8 +110,10 @@ async function bootROI(rules, kpi){
 }
 
 async function boot() {
+  let kpi = null, rules = null;
+
   try {
-    const kpi = await loadJSON("./summary.json");
+    kpi = await loadJSON("./summary.json");
     renderKPIs(kpi);
     renderBars(kpi);
   } catch (e) {
@@ -123,7 +125,7 @@ async function boot() {
   }
 
   try {
-    const rules = await loadJSON("./rules.json");
+    rules = await loadJSON("./rules.json");
     renderRulesTable(rules);
   } catch (e) {
     console.error(e);
@@ -131,6 +133,11 @@ async function boot() {
       "beforeend",
       `<p style="color:#f99">Load rules.json failed. Run shelf_op.py first.</p>`
     );
+  }
+
+  // Only boot ROI if the ROI section exists on the page
+  if (document.getElementById('roi') && kpi && rules) {
+    bootROI(rules, kpi);
   }
 }
 
